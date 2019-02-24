@@ -10,7 +10,7 @@ const resolvers = {
     Result: {
         __resolveType(obj, context, info){
             if(obj.album){
-            return 'Track';
+                return 'Track';
             }
             return 'Artist';
         },
@@ -19,12 +19,7 @@ const resolvers = {
         async getArchivedTops(parent, args, context, info){
             return TopModel.find({user:args.user, time_range:args.time_range}).exec();
         },
-        async getTopArtists(parent, args, context, info){
-            args.type = "artists";
-            return await tops(parent, args, context, info)
-        },
-        async getTopTracks(parent, args, context, info){
-            args.type = "tracks";
+        async getTop(parent, args, context, info){
             return await tops(parent, args, context, info)
         },
         async getRecommendations(parent, args, context, info){

@@ -23,11 +23,11 @@ class Dashboard extends Component {
         <div className="container">
           <div className="tracks">
             <h3>Tracks</h3>
-            <Tops term={this.state.term} type="tracks" />
+            <Tops term={this.state.term} type="track" />
           </div>
           <div className="artists">
             <h3>Artists</h3>
-            <Tops term={this.state.term} type="artists"/>
+            <Tops term={this.state.term} type="artist"/>
           </div>
         </div>
       </div>

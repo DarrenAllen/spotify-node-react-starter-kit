@@ -9,9 +9,9 @@ async function getTop(spotify, term, type, ctx){
         ctx.throw(400,"Must specify term and type");
     }
     let tops;
-    if(type === "artists"){
+    if(type === "artist"){
         tops = await spotify.getMyTopArtists({time_range: term, ...options})
-    } else if (type === "tracks"){
+    } else if (type === "track"){
         tops = await spotify.getMyTopTracks({time_range: term, ...options})
     } else {
         ctx.throw(400,"Unsupported type specified " + type);
