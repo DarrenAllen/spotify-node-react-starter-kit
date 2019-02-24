@@ -3,7 +3,12 @@ import SpotifyImages from "./SpotifyImages"
 class Track extends Component {
   render() {
     return (
-      <li><SpotifyImages images={this.props.data.album.images} />{this.props.data.name}</li>
+      <li>
+        <div className="wrapper">
+          <div><SpotifyImages images={this.props.data.album.images} /></div>
+          <div>{this.props.data.name}</div>
+        </div>
+      </li>
     )
   }
 }

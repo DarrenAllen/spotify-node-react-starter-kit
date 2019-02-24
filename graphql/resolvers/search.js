@@ -1,38 +1,22 @@
 const request = require('request-promise-native');
-
-async function searchArtists(parent, args, context, info){
-  console.info("Search artists!", args)
-
+async function search(parent, args, context, info){
+  console.info("Search!", args)
+  const type = args.type;
   const options = {
     uri: "http://localhost:8818/search",
     json: true,
     qs: {
       user: args.user,
-      types: "artist",
+      types: type,
       q: args.q
     }
   };
   const recs = await request(options);
-
+  if(type === "track"){
+    return recs.body.tracks.items;
+  }
   return recs.body.artists.items;
 }
-async function searchTracks(parent, args, context, info){
-  console.info("Search tracks!", args)
-
-  const options = {
-    uri: "http://localhost:8818/search",
-    json: true,
-    qs: {
-      user: args.user,
-      types: "track",
-      q: args.q
-    }
-  };
-  const recs = await request(options);
-
-  return recs.body.tracks.items;
-}
 module.exports = {
-  searchArtists,
-  searchTracks
+  search
 }

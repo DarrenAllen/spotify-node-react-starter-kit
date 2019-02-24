@@ -8,6 +8,7 @@ class Home extends Component {
         <h1>Welcome!</h1>
         <p>New to spotify Ops? <Link to="/signup">Sign Up!</Link></p>
         <p>Otherwise <Link to="/login">login</Link></p>
+        <p>You might also be interested in checking out the <Link to="/recommendations">recommendation</Link> page or the <Link to="/dashboard">Dashboard</Link></p>
       </div>
     )
   }
