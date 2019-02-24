@@ -17,9 +17,14 @@ label, input {
     }
     ul {
       list-style: none;
-      img {
-        height: 50px;
-        width: 50px;
+      li {
+        .wrapper{
+          display: inline-flex
+        }
+        img {
+          height: 50px;
+          width: 50px;
+        }
       }
     }
 }

@@ -7,7 +7,8 @@ import { ApolloProvider } from "react-apollo";
 import ApolloClient from "apollo-boost";
 import './build/App.css';
 import { Router } from "@reach/router"
-console.info(Router)
+import Recommendations from './recommendations/Recommendations.js';
+
 const client = new ApolloClient({
   uri: "http://localhost:4000/graphql"
 });
@@ -25,6 +26,7 @@ class App extends Component {
             <LogIn path="login"/>
             <Dashboard path="dashboard"/>
             <Home path="/" />
+            <Recommendations path="recommendations" />
           </Router>
         </div>
       </ApolloProvider>
