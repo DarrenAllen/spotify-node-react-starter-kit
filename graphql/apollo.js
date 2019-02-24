@@ -4,6 +4,7 @@ const TopModel = require('./models/tops');
 const genres = require("./resolvers/genres")
 const tops = require('./resolvers/tops');
 const recommendations = require('./resolvers/recommendations');
+const {searchArtists, searchTracks} = require('./resolvers/search');
 
 const resolvers = {
     Query: {
@@ -20,6 +21,12 @@ const resolvers = {
         },
         async getRecommendations(parent, args, context, info){
             return await recommendations(parent, args, context, info)
+        },
+        async searchArtists(parent, args, context, info){
+            return await searchArtists(parent, args, context, info);
+        },
+        async searchTracks(parent, args, context, info){
+            return await searchTracks(parent, args, context, info);
         },
         getGenres(){
             return genres;

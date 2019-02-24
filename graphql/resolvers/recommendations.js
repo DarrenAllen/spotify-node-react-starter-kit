@@ -13,8 +13,8 @@ async function getRecommendations(parent, args, context, info){
     }
   };
   const recs = await request(options);
-  console.info("GRAPH RESULTS!", recs.body)
+
   return recs.body.tracks;
-  // return tops.body.items;
+
 }
 module.exports = getRecommendations

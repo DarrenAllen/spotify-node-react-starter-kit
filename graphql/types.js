@@ -37,6 +37,8 @@ module.exports = gql`
         getTopTracks(time_range: String, user: String!): [Track]
         getRecommendations(user: String!, seed_artists: String, seed_genres: String, seed_tracks: String): [Track]
         getGenres: [String]
+        searchTracks(user: String!, q: String!): [Track]
+        searchArtists(user: String!, q: String!): [Artist]
     }
 `;
 
