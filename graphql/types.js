@@ -32,9 +32,10 @@ module.exports = gql`
         tracks: [Track]
     }
     type Query {
-        getArchivedTops(time_range: String, user: String): [ArchivedTop]
-        getTopArtists(time_range: String, user: String): [Artist]
-        getTopTracks(time_range: String, user: String): [Track]
+        getArchivedTops(time_range: String, user: String!): [ArchivedTop]
+        getTopArtists(time_range: String, user: String!): [Artist]
+        getTopTracks(time_range: String, user: String!): [Track]
+        getRecommendations(user: String!, seed_artists: String, seed_genres: String, seed_tracks: String): [Track]
         getGenres: [String]
     }
 `;
