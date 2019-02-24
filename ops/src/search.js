@@ -7,7 +7,7 @@ const options = {
 async function search(spotify, ctx){
     const query = ctx.query.q;
     const types = ctx.query.types.split(",");
-    console.info("SEARCH", query, types)
+
     const result = await spotify.search(query, types);
     return result;
 }
