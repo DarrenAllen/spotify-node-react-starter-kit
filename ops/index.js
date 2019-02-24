@@ -8,6 +8,7 @@ let {saveTop, getTop}= require('./src/top');
 let TokenModel = require('./src/models/token')
 let cors = require('@koa/cors');
 let recs = require('./src/recommendations');
+let search = require('./src/search');
 
 console.info("Starting ops-cron!");
 
@@ -42,6 +43,13 @@ router.get('/recommendations', async (ctx, next) => {
     ctx.status = 201;
     next();
 });
+router.get('/search', async (ctx, next) => {
+    console.info("**** CALLED SEARCH ****", JSON.stringify(ctx.query));
+    ctx.body = await search(ctx.state.spotify, ctx);
+    ctx.status = 201;
+    next();
+});
+
 
 router.get('/authentication', async (ctx, next)=> {
     console.info("**** CALLED AUTHENTICATION ****");
