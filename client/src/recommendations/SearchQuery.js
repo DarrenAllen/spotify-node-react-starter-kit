@@ -7,9 +7,11 @@ class SearchQuery extends Component {
   constructor(){
     super();
     this.state = {
-      q: ""
+      q: "",
+      selected: []
     }
     this.handleChange = this.handleChange.bind(this);
+    this.selectItem = this.selectItem.bind(this);
   }
   handleChange(event){
     const value = event.target.value;
@@ -17,13 +19,26 @@ class SearchQuery extends Component {
     this.setState({q: value});
     event.preventDefault();
   }
+  selectItem(event){
+    const val = event.target.value.split(",")
+    
+    const selected = this.state.selected;
+
+    selected.push({
+      name: val[0],
+      id: val[1]
+    });
+    this.setState({
+      selected: selected
+    })
+  }
   render() {
     return (
       <UserConsumer>
         {
         (context) => {
           return (
-            <div>
+            <div className="{this.props.type}">
               <h3>{this.props.type}</h3>
               <input
                 type="text"
@@ -36,13 +51,19 @@ class SearchQuery extends Component {
                   if (loading) return <p>Loading...</p>;
                   if (error) return <p>Error :(</p>;
                   if(!data) return <p>No results</p>
+                  if(this.state.selected.length >=5) return <p>No more selections remaining</p>
                   return data.items.map(ult => {
+                    const combined = ult.name + "," + ult.id;
                     return(
-                      <div>{ult.name}</div>
+                      <div><button onClick={this.selectItem} value={combined}>+</button> {ult.name}</div>
                     )
                   });
                 }}
               </Query>
+              <div className="selected">
+                <p>Already selected</p>
+                {this.state.selected.map(item=>item.name+" ")}
+              </div>
             </div>
           )
         }

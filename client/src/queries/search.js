@@ -13,6 +13,7 @@ const query = gql`
         }
         ... on Artist {
           name
+          id
         }
       }
     }`;
